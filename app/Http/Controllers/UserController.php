@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUser;
 use App\Repositories\RoleRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -17,9 +18,8 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 用户列表页
+     * $roles：新增及编辑用户表单中的角色单选项赋值
      */
     public function index()
     {
@@ -29,24 +29,23 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 搜索表单提交地址
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $list=$this->user->searchUser();
+        $roles=$this->role->roleList();
+        return view('user/userPage',['users'=>$list,'roles'=>$roles]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 新增用户表单提交地址
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $user=$this->user->addUser($request);
+        $this->user->storeUser($request);
         return redirect('/user');
     }
 
@@ -62,26 +61,28 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * 修改密码表单提交地址
+     * 1:change password; 2:update status; 3:add role
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->type=='1'){
+            $this->user->changePassword($request,$id);
+        }else if ($request->type=='2'){
+            $this->user->updateStatus($id);
+        }else if ($request->type=='3'){
+            $this->user->changeRole($request,$id);
+        }
+        return redirect('/user');
     }
 
     /**

@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('user','UserController');
-
-Route::resource('role','RoleController');
+Route::group(['middleware'=>'auth'],function (){
+    Route::resource('user','UserController');
+    Route::resource('role','RoleController');
+    Route::resource('type','VideoTypeController');
+    Route::resource('video','VideoController');
+    Route::resource('training','RoleVideoController');
+});

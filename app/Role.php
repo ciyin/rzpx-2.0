@@ -10,8 +10,13 @@ class Role extends Model
         'role','created_by'
     ];
 
-    public function roleBelongsToManyUsers(){
+//    关联用户模型：多对多
+    public function users(){
         return $this->belongsToMany('App\User');
     }
 
+//    关联视频模型：多对多
+    public function videos(){
+        return $this->belongsToMany('App\Video');
+    }
 }

@@ -14,15 +14,27 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->username}}</td>
-            <td>6666</td>
+            <td>
+                @foreach($user->roles as $value)
+                    <span>{{$value->role}}/</span>
+                @endforeach
+            </td>
             <td>{{$user->city}}</td>
             <td>{{$user->status}}</td>
             <td>{{$user->created_at}}</td>
             <td>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editUser{{$user->id}}">
-                    编辑
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#changePassword{{$user->id}}">
+                    密码
                 </button>
-                @include('user/editUser')
+                @include('user/changePassword')
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateStatus{{$user->id}}">
+                    停用
+                </button>
+                @include('user/updateStatus')
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#changeRole{{$user->id}}">
+                    角色
+                </button>
+                @include('user/changeRole')
             </td>
         </tr>
     @endforeach

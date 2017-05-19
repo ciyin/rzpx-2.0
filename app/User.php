@@ -27,7 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function userBelongsToManyRoles(){
+//    关联角色模型：多对多
+    public function roles(){
         return $this->belongsToMany('App\Role');
     }
+
 }

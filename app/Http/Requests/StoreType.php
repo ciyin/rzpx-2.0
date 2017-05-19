@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddUser extends FormRequest
+class StoreType extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class AddUser extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class AddUser extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type'=>'required|unique:video_types,type',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'type.required'=>'分类不能为空',
+            'type.unique'=>'该分类已存在',
         ];
     }
 }

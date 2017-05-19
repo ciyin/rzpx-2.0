@@ -18,6 +18,54 @@ class RolesTableSeeder extends Seeder
                 'created_at'=>date('Y-m-d H:i:s'),
                 'updated_at'=>date('Y-m-d H:i:s'),
             ),
+            1=>array(
+                'role'=>'人力',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            2=>array(
+                'role'=>'督导(兼)',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            3=>array(
+                'role'=>'督导',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            4=>array(
+                'role'=>'CR',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            5=>array(
+                'role'=>'顾问',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            6=>array(
+                'role'=>'行政',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            7=>array(
+                'role'=>'教务',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
+            8=>array(
+                'role'=>'教师',
+                'created_by'=>'1',
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ),
         ));
     }
 }

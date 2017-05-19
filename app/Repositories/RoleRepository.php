@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class RoleRepository{
 
 //    新增角色记录
-    public function addRole($request){
+    public function storeRole($request){
         $role=new Role();
         $role->role=$request->role;
         $role->created_by=Auth::id();
@@ -22,13 +22,13 @@ class RoleRepository{
     }
 
 //    更新角色记录
-    public function editRole($request,$id){
+    public function updateRole($request,$id){
         $role=Role::find($id);
         $role->role=$request->role;
         $role->save();
     }
 
-//    取出所有角色列表
+//    取出所有角色记录
     public function roleList(){
         $list=Role::all();
         return $list;
@@ -36,7 +36,7 @@ class RoleRepository{
 
 //    按角色名搜索角色列表
     public function searchRole(){
-        $list=Role::where('role','like',$_GET['searchRole'])->get();
+        $list=Role::where('role','like','%'.$_GET['searchRole'].'%')->get();
         return $list;
     }
 }

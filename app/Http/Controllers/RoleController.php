@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddRole;
+use App\Http\Requests\StoreRole;
 use App\Repositories\RoleRepository;
 
 class RoleController extends Controller
@@ -35,9 +35,9 @@ class RoleController extends Controller
     /**
      * 新增角色
      */
-    public function store(AddRole $request)
+    public function store(StoreRole $request)
     {
-        $this->role->addRole($request);
+        $this->role->storeRole($request);
         return redirect('/role');
     }
 
@@ -67,9 +67,9 @@ class RoleController extends Controller
      * 更新角色信息
      *
      */
-    public function update(AddRole $request, $id)
+    public function update(StoreRole $request, $id)
     {
-        $this->role->editRole($request,$id);
+        $this->role->updateRole($request,$id);
         return redirect('/role');
     }
 
