@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Repositories\UserRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUser extends FormRequest
@@ -11,9 +12,15 @@ class StoreUser extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(UserRepository $user)
     {
-        return true;
+        $role=$user->getUserRoles();
+//        当用户的角色为管理员或人力时，才能操作“新增用户”
+        if ($role==1 || $role==2){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

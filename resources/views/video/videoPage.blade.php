@@ -4,9 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-xs-12">
-                <ul>
-                    <li><a>视频管理</a></li>
-                </ul>
+                @if($userRoles==1)
+                    @include('nav/admin')
+                @elseif($userRoles==2)
+                    @include('nav/hr')
+                @elseif($userRoles==0)
+                    @include('nav/user')
+                @endif
             </div>
             <div class="col-lg-10 col-md-10 col-xs-12">
                 <div class="row">

@@ -28,6 +28,7 @@ class User extends Authenticatable
     ];
 
 //    关联角色模型：多对多
+//    一个用户可以有多种角色，一个角色也可以有多个用户
     public function roles(){
         return $this->belongsToMany('App\Role');
     }

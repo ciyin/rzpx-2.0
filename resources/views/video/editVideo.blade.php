@@ -10,6 +10,7 @@
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="modal-body">
+                    {{--关联角色和编辑视频都是传到video update这个地址，所以用type来区分动作--}}
                     <input type="hidden" name="type" value="1">
                     <div class="form-group">
                         <label for="editVideo">视频名称：</label>
@@ -19,7 +20,6 @@
                         <label for="address">观看地址：</label>
                         <input type="text" class="form-control" id="address" name="saved_at" value="{{$video->saved_at}}">
                     </div>
-
                     <div class="form-group">
                         <label for="time">时长：</label>
                         <input type="text" class="form-control" id="time" name="time" value="{{$video->time}}">

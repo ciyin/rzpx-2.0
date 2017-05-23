@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="editType">分类：</label>
-                        <input type="text" class="form-control" id="editType" name="type">
+                        <input type="text" class="form-control" id="editType" name="type" value="{{$type->type}}">
                     </div>
                 </div>
                 <div class="modal-footer">

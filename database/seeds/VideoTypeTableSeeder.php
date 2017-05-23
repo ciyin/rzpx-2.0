@@ -23,7 +23,7 @@ class VideoTypeTableSeeder extends Seeder
                 'updated_at'=>date('Y-m-d H:i:s'),
             ),
             2=>array(
-                'type'=>'1COURSE',
+                'type'=>'1 Course',
                 'created_at'=>date('Y-m-d H:i:s'),
                 'updated_at'=>date('Y-m-d H:i:s'),
             ),

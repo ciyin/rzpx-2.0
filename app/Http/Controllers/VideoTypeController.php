@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreType;
 use App\Repositories\TypeRepository;
-use Illuminate\Http\Request;
+use App\Repositories\UserRepository;
 
 class VideoTypeController extends Controller
 {
     protected $type;
-    public function __construct(TypeRepository $type)
+    protected $user;
+    public function __construct(TypeRepository $type,UserRepository $user)
     {
         $this->type=$type;
+        $this->user=$user;
     }
 
     /**
@@ -20,7 +22,8 @@ class VideoTypeController extends Controller
     public function index()
     {
         $list=$this->type->typeList();
-        return view('type/typePage',['types'=>$list]);
+        $userRoles=$this->user->getUserRoles();
+        return view('type/typePage',['types'=>$list,'userRoles'=>$userRoles]);
     }
 
     /**
@@ -29,7 +32,8 @@ class VideoTypeController extends Controller
     public function create()
     {
         $list=$this->type->searchType();
-        return view('type/typePage',['types'=>$list]);
+        $userRoles=$this->user->getUserRoles();
+        return view('type/typePage',['types'=>$list,'userRoles'=>$userRoles]);
     }
 
     /**
@@ -43,28 +47,6 @@ class VideoTypeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * 编辑分类表单提交地址
      *
      */
@@ -72,16 +54,5 @@ class VideoTypeController extends Controller
     {
         $this->type->updateType($request,$id);
         return redirect('/type');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

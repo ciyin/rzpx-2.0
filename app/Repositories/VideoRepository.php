@@ -46,13 +46,16 @@ class VideoRepository{
         return $list;
     }
 
-//    关联角色
+//    关联角色：因不知用户会如何修改角色的关联，有可能是删除一个或添加一个，所以先把之前的关联记录全删除了，再保存此次的选择
+//    这样，不管是删除还是新增，都可以在一个界面内完成
     public function attachRole($request,$id){
         $res=$request->role;
         $video=Video::find($id);
+//        先删除该视频之前的角色关联记录
         foreach ($video->roles as $role){
             $video->roles()->detach($role->id);
         }
+//        保存此次的所关联的角色
         if (count($request->role)>0){
             for ($i=0;$i<count($request->role);$i++){
                 $video->roles()->attach($res[$i]);

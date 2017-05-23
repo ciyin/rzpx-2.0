@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRole;
 use App\Repositories\RoleRepository;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
     protected $role;
+    protected $user;
 
-    public function __construct(RoleRepository $role)
+    public function __construct(RoleRepository $role,UserRepository $user)
     {
         $this->role=$role;
+        $this->user=$user;
     }
 
     /**
@@ -20,20 +24,22 @@ class RoleController extends Controller
     public function index()
     {
         $roles=$this->role->roleList();
-        return view('role/rolePage',['roles'=>$roles]);
+        $userRoles=$this->user->getUserRoles();
+        return view('role/rolePage',['roles'=>$roles,'userRoles'=>$userRoles]);
     }
 
     /**
-     * 搜索角色
+     * 搜索角色表单提交地址
      */
     public function create()
     {
         $roles=$this->role->searchRole();
-        return view('role/rolePage',['roles'=>$roles]);
+        $userRoles=$this->user->getUserRoles();
+        return view('role/rolePage',['roles'=>$roles,'userRoles'=>$userRoles]);
     }
 
     /**
-     * 新增角色
+     * 新增角色表单提交地址
      */
     public function store(StoreRole $request)
     {
@@ -42,30 +48,7 @@ class RoleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 更新角色信息
-     *
+     * 更新角色表单提交地址
      */
     public function update(StoreRole $request, $id)
     {
@@ -73,14 +56,4 @@ class RoleController extends Controller
         return redirect('/role');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

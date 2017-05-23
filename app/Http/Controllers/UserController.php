@@ -25,18 +25,20 @@ class UserController extends Controller
     {
         $list=$this->user->userList();
         $roles=$this->role->roleList();
-        return view('user/userPage',['users'=>$list,'roles'=>$roles]);
+        $userRoles=$this->user->getUserRoles();
+        return view('user/userPage',['users'=>$list,'roles'=>$roles,'userRoles'=>$userRoles]);
     }
 
     /**
-     * 搜索表单提交地址
+     * 搜索用户表单提交地址
      *
      */
     public function create()
     {
         $list=$this->user->searchUser();
         $roles=$this->role->roleList();
-        return view('user/userPage',['users'=>$list,'roles'=>$roles]);
+        $userRoles=$this->user->getUserRoles();
+        return view('user/userPage',['users'=>$list,'roles'=>$roles,'userRoles'=>$userRoles]);
     }
 
     /**
@@ -50,49 +52,22 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     *
-     *
-     */
-    public function edit($id)
-    {
-
-    }
-
-    /**
-     * 修改密码表单提交地址
-     * 1:change password; 2:update status; 3:add role
+     * 修改密码表单、停用账号、角色关联表单的提交地址
+     * 1:change password; 2:update status; 3:role associate
      */
     public function update(Request $request, $id)
     {
-        if ($request->type=='1'){
-            $this->user->changePassword($request,$id);
-        }else if ($request->type=='2'){
-            $this->user->updateStatus($id);
-        }else if ($request->type=='3'){
-            $this->user->changeRole($request,$id);
+        switch ($request->type){
+            case 1:
+                $this->user->changePassword($request,$id);
+                break;
+            case 2:
+                $this->user->updateStatus($id);
+                break;
+            case 3:
+                $this->user->changeRole($request,$id);
+                break;
         }
         return redirect('/user');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

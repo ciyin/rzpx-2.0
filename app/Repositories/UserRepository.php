@@ -7,6 +7,7 @@
  */
 namespace App\Repositories;
 
+use App\Http\Requests\ChangePassword;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,8 @@ class UserRepository
         $user->save();
     }
 
-//    修改角色关联
+//    修改角色关联:因不确定用户是怎样修改用户的关联，所以采用把之前的所有关联记录都删除，然后根据传过来的role再添加。
+//    这样删除角色或者新增角色都在同一个界面内完成
     public function changeRole($request,$id){
         $roles=$request->role;
         $user=User::find($id);
@@ -73,5 +75,22 @@ class UserRepository
     public function searchUser(){
         $list = User::with('roles')->where('name','like','%'.$_GET['searchUser'].'%')->get();
         return $list;
+    }
+
+//    判断用户的身份：1为管理员，2为人力，3为其他
+    public function getUserRoles(){
+        $user=Auth::user();
+        $roles=$user->roles()->get();
+        $userRoles='';
+        foreach ($roles as $role){
+            $userRoles.=$role->id;
+        }
+        if (str_contains($userRoles,'1')){
+            return '1';
+        }elseif (str_contains($userRoles,'2')){
+            return '2';
+        }else{
+            return '0';
+        }
     }
 }

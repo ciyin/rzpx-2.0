@@ -19,6 +19,7 @@
                     <div class="form-group">
                         <label for="Password">新密码：</label>
                         <input type="password" class="form-control" id="Password" name="password">
+                        {{--修改密码，修改角色，停用账号都是提交到user.update这个路由，所以用type来区分动作--}}
                         <input type="hidden" name="type" value="1">
                     </div>
                 </div>

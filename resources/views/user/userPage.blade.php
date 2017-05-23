@@ -4,9 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-xs-12">
-               <ul>
-                   <li><a>用户管理</a></li>
-               </ul>
+                @if($userRoles==1)
+                    @include('nav/admin')
+                @elseif($userRoles==2)
+                    @include('nav/hr')
+                @elseif($userRoles==0)
+                    @include('nav/user')
+                @endif
             </div>
             <div class="col-lg-10 col-md-10 col-xs-12">
                 <div class="row">
@@ -20,13 +24,13 @@
                         </div>
                     @endif
 
-                    {{--@if(count($users)==0)--}}
-                        {{--<div class="alert alert-danger">--}}
-                            {{--<ul>--}}
-                                {{--<li>没有找到相关记录！</li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
+                    @if(count($users)==0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                <li>没有找到相关记录！</li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="row">

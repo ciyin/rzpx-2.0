@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="editRole">角色：</label>
-                        <input type="text" class="form-control" id="editRole" name="role">
+                        <input type="text" class="form-control" id="editRole" name="role" value="{{$role->role}}">
                     </div>
                 </div>
                 <div class="modal-footer">

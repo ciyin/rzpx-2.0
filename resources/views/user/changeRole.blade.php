@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加角色</h4>
+                <h4 class="modal-title" id="myModalLabel">关联角色</h4>
             </div>
             <form method="post" action="{{route('user.update',$user->id)}}">
                 {{csrf_field()}}
@@ -16,6 +16,7 @@
                             <input type="text" class="form-control" id="editName" name="name" value="{{$user->name}}">
                         </div>
                     </fieldset>
+                    {{--修改密码，修改角色，停用账号都是提交到user.update这个路由，所以用type来区分动作--}}
                     <input type="hidden" name="type" value="3">
                     <div>
                         <label>角色：</label>

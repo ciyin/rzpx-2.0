@@ -10,6 +10,7 @@
                 {{csrf_field()}}
                 {{method_field('PUT')}}
                 <div class="modal-body">
+                    {{--关联角色和编辑视频都是传到video update这个地址，所以用type来区分动作--}}
                     <input type="hidden" name="type" value="2">
                     <fieldset disabled>
                         <div class="form-group">

@@ -17,12 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
+//middleware:检测用户是否有登录。登录了才能访问以下的路由，若未登录，返回登录页面。
 Route::group(['middleware'=>'auth'],function (){
-    Route::resource('user','UserController');
-    Route::resource('role','RoleController');
-    Route::resource('type','VideoTypeController');
-    Route::resource('video','VideoController');
-    Route::resource('training','RoleVideoController');
+    Route::resource('user','UserController');//用户管理
+    Route::resource('role','RoleController');//角色管理
+    Route::resource('type','VideoTypeController');//视频分类
+    Route::resource('video','VideoController');//视频
+    Route::resource('training','RoleVideoController');//培训内容
 });

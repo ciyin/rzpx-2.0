@@ -2,91 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserRepository;
 use App\Role;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RoleVideoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+//    培训内容页面
+    public function index(UserRepository $theRoles)
     {
-        $users=Auth::user()->with('roles')->get();
-        return view('role-video/roleVideoPage',['users'=>$users]);
+        $user=Auth::user();
+        $userRoles=$theRoles->getUserRoles();
+        if ($userRoles==1 || $userRoles==2){
+            $roles=Role::all();
+        }else{
+            $roles=$user->roles()->get();
+        }
+        return view('training/trainingPage',['roles'=>$roles,'userRoles'=>$userRoles]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+//    培训内容详情页
     public function show($id)
     {
+//        取出该角色的所有视频，并按类型排序
+//        这里要求添加视频分类时需按照留学酷、crm、1course这样来添加，因为先接触的一般是留学酷才是CRM
         $videos=Role::find($id)->videos()->with('videoType')->orderBy('video_type_id','asc')->get();
         $list=$videos->groupBy('video_type_id');
-        return view('role-video/roleVideoDetail',['videos'=>$list]);
-
+        return view('training/trainingDetail',['videos'=>$list]);
     }
 
-    /**
-     *
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

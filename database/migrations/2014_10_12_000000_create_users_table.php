@@ -9,7 +9,7 @@ class CreateUsersTable extends Migration
     /**
      * Run the migrations.
      * 'name'=>'姓名','username'=>'用户名，用于登录'
-     *
+     * 姓名可修改，用户名不能修改
      */
     public function up()
     {

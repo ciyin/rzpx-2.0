@@ -25,7 +25,7 @@
                         <label>角色：</label>
                         @foreach($roles as $role)
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="role[]" value="{{$role->id}}"> {{$role->role}}
+                                <input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->role}}
                             </label>
                         @endforeach
                     </div>

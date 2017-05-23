@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Repositories\UserRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreVideo extends FormRequest
@@ -11,9 +12,15 @@ class StoreVideo extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(UserRepository $user)
     {
-        return true;
+        $role=$user->getUserRoles();
+//        用户的角色为管理员时才能操作“新增视频”
+        if ($role==1){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -25,7 +32,7 @@ class StoreVideo extends FormRequest
     {
         return [
             'video'=>'required|unique:videos,video',
-            'saved_at'=>'required',
+            'saved_at'=>'required|unique:videos,saved_at',
             'time'=>'required',
             'speaker'=>'required',
             'content'=>'required',
@@ -40,6 +47,7 @@ class StoreVideo extends FormRequest
             'video.required'=>'视频名称不能为空',
             'video.unique'=>'该视频名称已存在',
             'saved_at.required'=>'观看地址不能为空',
+            'saved_at.unique'=>'该地址已存在',
             'time.required'=>'时长不能为空',
             'speaker.required'=>'录制人不能为空',
             'content.required'=>'内容简介不能为空',

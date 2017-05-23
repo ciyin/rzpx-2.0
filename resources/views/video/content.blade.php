@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">视频内容简介</h4>
             </div>
-            <form method="post">
+            <form>
                 {{csrf_field()}}
                 <div class="modal-body">
                     <p>地址：{{$video->saved_at}}</p>
