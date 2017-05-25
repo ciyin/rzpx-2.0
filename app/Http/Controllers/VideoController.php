@@ -31,7 +31,8 @@ class VideoController extends Controller
         $types=$this->type->typeList();
         $roles=$this->role->roleList();
         $userRoles=$this->user->getUserRoles();
-        return view('video/videoPage',['videos'=>$videos,'types'=>$types,'roles'=>$roles,'userRoles'=>$userRoles]);
+        $rows=count($videos);
+        return view('video/videoPage',['videos'=>$videos,'types'=>$types,'roles'=>$roles,'userRoles'=>$userRoles,'rows'=>$rows]);
     }
 
     /**

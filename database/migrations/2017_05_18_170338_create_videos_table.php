@@ -18,9 +18,10 @@ class CreateVideosTable extends Migration
             $table->integer('video_type_id');//视频分类
             $table->string('video');//视频名称
             $table->text('content');//视频内容简介
-            $table->string('saved_at');//视频观看地址
+            $table->text('saved_at');//视频观看地址
             $table->string('time');//时长
-            $table->string('speaker');//录制人
+            $table->string('teacher');//录制人
+            $table->string('status');//使用状态
             $table->timestamps();
         });
     }

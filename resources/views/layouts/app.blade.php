@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '沃邦操作系统培训') }}</title>
+    <title>{{ config('app.name', '沃邦办公操作系统培训') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/training') }}">
-                        {{ config('app.name', '沃邦系统操作培训') }}
+                        {{ config('app.name', '沃邦办公系统操作培训') }}
                     </a>
                 </div>
 

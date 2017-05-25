@@ -33,4 +33,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+//    关联培训记录模型：一对多。一个用户可以有多条培训记录
+    public function logs(){
+        return $this->hasMany('App\Log');
+    }
+
 }

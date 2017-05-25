@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => '沃邦系统操作培训',
+    'name' => '沃邦办公系统操作培训',
 
     /*
     |--------------------------------------------------------------------------

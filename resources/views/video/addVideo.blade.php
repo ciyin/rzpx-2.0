@@ -37,6 +37,15 @@
                             </label>
                         @endforeach
                     </div>
+                    <div>
+                        <label>状态：</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="使用中"> 启用
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="status" value="停用"> 停用
+                        </label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>

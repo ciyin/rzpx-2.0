@@ -24,4 +24,5 @@ Route::group(['middleware'=>'auth'],function (){
     Route::resource('type','VideoTypeController');//视频分类
     Route::resource('video','VideoController');//视频
     Route::resource('training','RoleVideoController');//培训内容
+    Route::resource('log','LogController');//培训记录
 });

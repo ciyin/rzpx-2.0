@@ -5,6 +5,7 @@
         <td>分类</td>
         <td>时长</td>
         <td>录制人</td>
+        <td>状态</td>
         <td>关联角色</td>
         <td>操作</td>
     </tr>
@@ -15,21 +16,25 @@
             <td>{{$video->video}}</td>
             <td>{{$video->videoType->type}}</td>
             <td>{{$video->time}}</td>
-            <td>{{$video->speaker}}</td>
+            <td>{{$video->teacher}}</td>
+            <td>{{$video->status}}</td>
             <td>
                 @foreach($video->roles as $role)
                     <span>{{$role->role}}/</span>
                 @endforeach
             </td>
             <td>
+                {{--弹出编辑视频信息表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editVideo{{$video->id}}">
                     编辑
                 </button>
                 @include('video/editVideo')
+                {{--弹出关联角色表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#attachRole{{$video->id}}">
                     角色
                 </button>
                 @include('video/attachRole')
+                {{--弹出查看视频地址和内容简介的表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#content{{$video->id}}">
                     内容
                 </button>

@@ -12,6 +12,7 @@
             <td>{{$type->type}}</td>
             <td>{{$type->created_at}}</td>
             <td>
+                {{--弹出编辑分类信息的表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editType{{$type->id}}">
                     编辑
                 </button>

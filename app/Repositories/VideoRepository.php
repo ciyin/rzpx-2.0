@@ -14,7 +14,7 @@ class VideoRepository{
 
 //    视频列表
     public function videoList(){
-        $list=Video::with(['videoType','roles'])->get();
+        $list=Video::with(['videoType','roles'])->paginate(20);
         return $list;
     }
 

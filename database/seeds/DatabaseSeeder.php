@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
          $this->call(RolesTableSeeder::class);
          $this->call(RoleUserTableSeeder::class);
          $this->call(VideoTypeTableSeeder::class);
+         $this->call(VideosTableSeeder::class);
     }
 }

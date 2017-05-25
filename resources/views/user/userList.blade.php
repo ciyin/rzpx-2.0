@@ -23,18 +23,26 @@
             <td>{{$user->status}}</td>
             <td>{{$user->created_at}}</td>
             <td>
+                {{--弹出修改密码表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#changePassword{{$user->id}}">
                     密码
                 </button>
                 @include('user/changePassword')
+                {{--弹出确定停用账号表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateStatus{{$user->id}}">
                     停用
                 </button>
                 @include('user/updateStatus')
+                {{--弹出关联角色表单--}}
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#changeRole{{$user->id}}">
                     角色
                 </button>
                 @include('user/changeRole')
+                {{--弹出短信通知文本--}}
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#text{{$user->id}}">
+                    短信
+                </button>
+                @include('user/text')
             </td>
         </tr>
     @endforeach
