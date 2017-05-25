@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-xs-12">
                         <div style="float: left">
-                            {{$videos->links()}} 共{{$rows}}个
+                            {{$videos->links()}}
                         </div>
                     </div>
                 </div>

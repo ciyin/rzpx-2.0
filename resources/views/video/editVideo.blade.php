@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="speaker">录制人：</label>
-                        <input type="text" class="form-control" id="speaker" name="speaker" value="{{$video->speaker}}">
+                        <input type="text" class="form-control" id="speaker" name="speaker" value="{{$video->teacher}}">
                     </div>
                     <div class="form-group">
                         <label for="content">内容简介：</label>
