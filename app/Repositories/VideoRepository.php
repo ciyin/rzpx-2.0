@@ -24,8 +24,9 @@ class VideoRepository{
         $video->video=$request->video;
         $video->saved_at=$request->saved_at;
         $video->time=$request->time;
-        $video->speaker=$request->speaker;
+        $video->teacher=$request->teacher;
         $video->content=$request->content;
+        $video->status=$request->status;
         VideoType::find($request->type_id)->videos()->save($video);
     }
 
@@ -35,8 +36,9 @@ class VideoRepository{
         $video->video=$request->video;
         $video->saved_at=$request->saved_at;
         $video->time=$request->time;
-        $video->speaker=$request->speaker;
+        $video->teacher=$request->teacher;
         $video->content=$request->content;
+        $video->status=$request->status;
         VideoType::find($request->type_id)->videos()->save($video);
     }
 

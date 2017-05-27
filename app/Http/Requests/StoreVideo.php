@@ -34,7 +34,7 @@ class StoreVideo extends FormRequest
             'video'=>'required|unique:videos,video',
             'saved_at'=>'required|unique:videos,saved_at',
             'time'=>'required',
-            'speaker'=>'required',
+            'teacher'=>'required',
             'content'=>'required',
             'type_id'=>'required',
 
@@ -49,7 +49,7 @@ class StoreVideo extends FormRequest
             'saved_at.required'=>'观看地址不能为空',
             'saved_at.unique'=>'该地址已存在',
             'time.required'=>'时长不能为空',
-            'speaker.required'=>'录制人不能为空',
+            'teacher.required'=>'录制人不能为空',
             'content.required'=>'内容简介不能为空',
             'type_id.required'=>'分类不能为空',
         ];

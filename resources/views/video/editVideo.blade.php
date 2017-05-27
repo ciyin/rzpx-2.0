@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="speaker">录制人：</label>
-                        <input type="text" class="form-control" id="speaker" name="speaker" value="{{$video->teacher}}">
+                        <input type="text" class="form-control" id="speaker" name="teacher" value="{{$video->teacher}}">
                     </div>
                     <div class="form-group">
                         <label for="content">内容简介：</label>
@@ -47,10 +47,18 @@
                     <div>
                         <label>状态：</label>
                         <label class="radio-inline">
-                            <input type="radio" name="status" value="使用中"> 启用
+                            <input type="radio" name="status" value="使用中"
+                             @if($video->status=='使用中')
+                                 checked
+                                   @endif
+                            > 启用
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="status" value="停用"> 停用
+                            <input type="radio" name="status" value="停用"
+                             @if($video->status=='停用')
+                                 checked
+                                   @endif
+                            > 停用
                         </label>
                     </div>
                 </div>

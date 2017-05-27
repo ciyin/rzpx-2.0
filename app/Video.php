@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     protected $fillable=[
-        'video','time','saved_at','speaker','contents',
+        'video','time','saved_at','teacher','contents',
     ];
 
 //    关联角色：多对多
